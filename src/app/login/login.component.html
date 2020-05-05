@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="card mt-5 mx-auto " style="width: 40rem;">
+        <div *ngIf="biometricLogin">
+            <div class="card-header">
+                <h3 class="text-center">Login with face</h3>
+            </div>
+            <app-camera   (pictureTaken)="handleImage($event)"></app-camera>
+        </div>
+
+        
+        <div class="card-body">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input [(ngModel)]="loginUser.username" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                    else.</small>
+            </div>
+            <div *ngIf="!biometricLogin" class="form-group">
+                <label  for="exampleInputPassword1">Password</label >
+                <input [(ngModel)]="loginUser.password.data"  type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <div class="text-center">
+                <button (click)="authLogin()" class="btn btn-success ">Login</button>
+            </div>
+        </div>
+    </div>
+</div>
